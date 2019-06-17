@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '../layout/layout.module';
 import { Routes, RouterModule } from '@angular/router';
-import { RecentThreadsComponent } from './recent.threads.component';
+import { RecentPostsComponent } from './recent.posts.component';
 
 const routes: Routes = [
     {
         path: '', 
-        component: RecentThreadsComponent,
+        component: RecentPostsComponent,
         canActivate: [  ],
         data: {
             title: 'Recent Threads'
@@ -19,15 +19,15 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     declarations: [
-        RecentThreadsComponent
+        RecentPostsComponent
     ],
     exports: [
-        RecentThreadsComponent,
+        RecentPostsComponent,
         RouterModule
     ],
     providers: [
     ]
 })
-export class ThreadsModule {
+export class PostsModule {
 
 }

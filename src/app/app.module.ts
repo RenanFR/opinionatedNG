@@ -2,14 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ThreadsModule } from './threads/threads.module';
+import { PostsModule } from './posts/posts.module';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { 
     path: '',
-    loadChildren: './threads/threads.module#ThreadsModule'
+    loadChildren: './posts/posts.module#PostsModule'
   },
+  { 
+    path: 'categories',
+    loadChildren: './categories/categories.module#CategoriesModule'
+  },  
 ];
 @NgModule({
   declarations: [
@@ -18,7 +23,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    ThreadsModule
+    CommonModule,
+    PostsModule
   ],
   exports: [
       RouterModule
