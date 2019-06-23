@@ -6,8 +6,17 @@ import { LayoutModule } from '../layout/layout.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from './category.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriesComponent } from './categories.component';
 
 const routes: Routes = [
+    {
+        path: '',
+        component: CategoriesComponent,
+        canActivate: [  ],
+        data: {
+            title: 'Categories'
+        }
+    },
     {
         path: 'new',
         component: NewCategoryComponent,
@@ -15,11 +24,12 @@ const routes: Routes = [
         data: {
             title: 'New category'
         }
-    },
+    }
 ];
 @NgModule({
     declarations: [
-        NewCategoryComponent
+        NewCategoryComponent,
+        CategoriesComponent
     ],
     imports: [
         LayoutModule,
@@ -29,7 +39,8 @@ const routes: Routes = [
         CommonModule
     ],
     exports: [
-        NewCategoryComponent
+        NewCategoryComponent,
+        CategoriesComponent
     ],
     providers: [
         CategoryService

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CategoryService } from './category.service';
 import { Category } from './category';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'opinionated-new-category',
@@ -13,7 +14,8 @@ export class NewCategoryComponent implements OnInit {
     
     constructor(
         public builder: FormBuilder,
-        public service: CategoryService
+        public service: CategoryService,
+        public router: Router
     ) {
         
     }
@@ -26,7 +28,10 @@ export class NewCategoryComponent implements OnInit {
 
     public saveCategory(): void {
         let description: string = this.categoryForm.get('description').value;
-        this.service.save(new Category(description));
+        this.service.save(new Category(description)).subscribe((responseText) => {
+            console.log(responseText);
+            this.router.navigate(['/categories']);
+        });
     }
 
 }
