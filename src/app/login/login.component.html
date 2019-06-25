@@ -1,0 +1,39 @@
+<div class="card-header">Login</div>
+<div class="card-body">
+    <form [formGroup]="authForm" (submit)="login()">
+    <div class="form-group">
+        <div class="form-label-group">
+        <input formControlName="name" type="text" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+        <label for="inputEmail">Username</label>
+        </div>
+        <vetweb-error *ngIf="authForm.get('name').errors?.required" errorMessage="User is required!"></vetweb-error>
+        <vetweb-error *ngIf="authForm.get('name').errors?.unavailableUserName" errorMessage="User does not exist!"></vetweb-error>
+        <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>
+    </div>
+    <div class="form-group">
+        <div class="form-label-group">
+        <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" #nameInput>
+        <label for="inputPassword">Password</label>
+        </div>
+        <vetweb-error *ngIf="authForm.get('password').errors?.required" errorMessage="Password is required!"></vetweb-error>
+    </div>
+    <div class="form-group">
+        <div class="checkbox">
+        <label>
+            <input type="checkbox" value="remember-me">
+            Remember Password
+        </label>
+        </div>
+    </div>
+    <button
+        [disabled]="authForm.invalid || authForm.pending"
+        type="submit" 
+        class="btn btn-primary btn-block">
+        Login
+    </button>
+    </form>
+    <div class="text-center">
+    <a class="d-block small mt-3" href="register.html">Register an Account</a>
+    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+    </div>
+</div>

@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
     ],
     providers: [
     ]
-})export class LayoutModule {
+})
+export class LayoutModule {
 
 }

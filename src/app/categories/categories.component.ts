@@ -6,7 +6,7 @@ import { CategoryService } from './category.service';
     selector: 'opinionated-categories',
     templateUrl: './categories-component.html'
   })
-export class CategoriesComponent implements OnInit{
+export class CategoriesComponent implements OnInit {
 
     public categories: Category[];
 
