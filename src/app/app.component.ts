@@ -19,10 +19,6 @@ export class AppComponent implements OnInit {
   ){ }
   
   ngOnInit(): void {
-    document.body.classList.remove('bg-dark');
-    this.tokenService.getUser().subscribe((user) => {
-      localStorage.setItem('user', user.sub);
-    });
     this.router.events
       .pipe(filter((routeEvent) => routeEvent instanceof NavigationEnd))
       .pipe(map(() => this.activatedRoute))

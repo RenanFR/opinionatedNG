@@ -4,6 +4,9 @@ import { CommonModule } from "@angular/common";
 import { KeysPipe } from "./keys.pipe";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RequestInterceptor } from "./request.interceptor";
+import { TokenService } from './token.service';
+import { ProgressLoaderService } from './progress.loader.service';
+import { LoaderComponent } from './loader.component';
 
 @NgModule({
     imports: [
@@ -11,13 +14,16 @@ import { RequestInterceptor } from "./request.interceptor";
         MessageCardsModule
     ],
     declarations:[
-        KeysPipe
+        KeysPipe,
+        LoaderComponent
     ],
     exports:[
         MessageCardsModule,
+        LoaderComponent,
         KeysPipe
     ],
     providers: [
+        ProgressLoaderService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

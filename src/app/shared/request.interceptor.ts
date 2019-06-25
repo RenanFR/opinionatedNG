@@ -1,13 +1,16 @@
 import { Injectable } from "@angular/core";
-import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpHeaders } from "@angular/common/http";
+import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { TokenService } from "./token.service";
+import { tap } from "rxjs/operators";
+import { ProgressLoaderService } from "./progress.loader.service";
 
 @Injectable()
-export class RequestInterceptor implements HttpInterceptor{
+export class RequestInterceptor implements HttpInterceptor {
 
     constructor(
-        private tokenService:TokenService 
+        private tokenService:TokenService,
+        private progressLoaderService:ProgressLoaderService
     ){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -19,7 +22,15 @@ export class RequestInterceptor implements HttpInterceptor{
                 }
             });
         }
-        return next.handle(req);
+        return next
+            .handle(req)
+            .pipe(tap(event => {
+                if (event instanceof HttpResponse) {
+                    this.progressLoaderService.stop();
+                } else {
+                    this.progressLoaderService.start();
+                }
+            }));
     }
 
 }

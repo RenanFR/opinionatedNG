@@ -1,39 +1,21 @@
-<div class="card-header">Login</div>
-<div class="card-body">
-    <form [formGroup]="authForm" (submit)="login()">
+<form  [formGroup]="authForm" (submit)="login()">
     <div class="form-group">
-        <div class="form-label-group">
-        <input formControlName="name" type="text" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-        <label for="inputEmail">Username</label>
-        </div>
-        <vetweb-error *ngIf="authForm.get('name').errors?.required" errorMessage="User is required!"></vetweb-error>
-        <vetweb-error *ngIf="authForm.get('name').errors?.unavailableUserName" errorMessage="User does not exist!"></vetweb-error>
-        <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>
+      <input formControlName="name" id="inputEmail" type="text" class="form-control" name="username" placeholder="Username" required="required">		
+      <vetweb-error *ngIf="(authForm.get('name').errors?.required  && authForm.get('name').touched)" errorMessage="User is required!"></vetweb-error>
+      <vetweb-error *ngIf="authForm.get('name').errors?.unavailableUserName" errorMessage="User does not exist!"></vetweb-error>
     </div>
+    <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>    
     <div class="form-group">
-        <div class="form-label-group">
-        <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" #nameInput>
-        <label for="inputPassword">Password</label>
-        </div>
-        <vetweb-error *ngIf="authForm.get('password').errors?.required" errorMessage="Password is required!"></vetweb-error>
+      <input formControlName="password" id="inputPassword" type="password" class="form-control" name="password" placeholder="Password" required="required">	
+      <vetweb-error *ngIf="(authForm.get('password').errors?.required && authForm.get('password').touched)" errorMessage="Password is required!"></vetweb-error>
+      <vetweb-error *ngIf="authForm.errors?.wrongCredentials" errorMessage="User and password must not be the same!"></vetweb-error>    
     </div>
     <div class="form-group">
-        <div class="checkbox">
-        <label>
-            <input type="checkbox" value="remember-me">
-            Remember Password
-        </label>
-        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" [disabled]="authForm.invalid || authForm.pending">Login</button>
+        <button
+            (click)="doLoginWithGoogle()"
+            class="unstyled-button">
+            <img src="../../assets/img/btn_google_signin_dark_focus_web.png" alt="Google Login">
+        </button>      
     </div>
-    <button
-        [disabled]="authForm.invalid || authForm.pending"
-        type="submit" 
-        class="btn btn-primary btn-block">
-        Login
-    </button>
-    </form>
-    <div class="text-center">
-    <a class="d-block small mt-3" href="register.html">Register an Account</a>
-    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-    </div>
-</div>
+</form>

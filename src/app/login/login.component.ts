@@ -5,14 +5,18 @@ import { AuthenticationService } from './authentication.service';
 import { UserExistsValidator } from './user.exists.validator';
 import { PlatformRuntimeDetectorService } from '../shared/platform.runtime.detector.service';
 import { UserInfo } from './user.info';
+import { userPasswordIsDifferent } from './user.password.is.different.validation';
 
 @Component({
-    selector: 'opinionated-login',
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
     bodyClass: boolean = true;
+
     authForm: FormGroup;
+    
     @ViewChild('nameInput') nameInput: ElementRef<HTMLInputElement>;
   
     constructor(
@@ -29,23 +33,28 @@ export class LoginComponent implements OnInit {
         .login(user.name, user.password)
         .subscribe(
           () => {
-              document.body.classList.remove('bg-dark');
-              this.router.navigate(['products']);
+              this.router.navigate(['']);
           },
           error => {
-              console.log(error.status);
+              console.log(error.status);console.log(error);
               if (this.platformDetector.checkIfItRunningOnBrowser()) {
                   this.nameInput.nativeElement.focus();
               }
           }
         );
     }
-  
+
+    public doLoginWithGoogle(): void {
+      this.authService.doLoginWithGoogle();
+    }
+
     ngOnInit() {
-      document.body.classList.add('bg-dark');
       this.authForm = this.authFormBuilder.group({
           name:['', [Validators.required], [this.userExistsValidator.checkNameIsTaken()]],
           password:['', Validators.required]
+      }, {
+        validator: userPasswordIsDifferent
       });
     }
+    
 }

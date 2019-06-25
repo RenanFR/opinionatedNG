@@ -4,10 +4,12 @@ import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        SharedModule,
         RouterModule
     ],
     declarations: [

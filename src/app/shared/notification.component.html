@@ -1,0 +1,8 @@
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+
+    <ul class = "list-unstyled">
+        <li *ngIf="notifications.length === 0" class="dropdown-item">List of notifications empty</li>
+        <li *ngFor="let notif of notifications" class="dropdown-item {{ getNotificationStyle(notif) }}">{{ notif.message }}</li>
+    </ul>
+
+</div>

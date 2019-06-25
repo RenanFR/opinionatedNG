@@ -18,7 +18,6 @@ export class CategoryService {
     }
 
     public getAll(): Observable<Category[]> {
-        console.log('Retrieving categories');
         return this.http.get<Category[]>(base);
     }
 
