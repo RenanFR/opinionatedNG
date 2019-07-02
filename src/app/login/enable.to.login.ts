@@ -14,7 +14,7 @@ export class EnableToLogin implements CanActivate{
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
         boolean | Observable<boolean> | Promise<boolean> {
         if (this.tokenService.isTokenSet()) {
-            this.router.navigate(['']);
+            this.router.navigate(['categories']);
             return false;
         }
         return true;
