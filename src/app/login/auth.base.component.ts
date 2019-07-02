@@ -1,7 +1,8 @@
-import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
+import { Component, ViewChild, ElementRef, OnInit, ViewEncapsulation } from "@angular/core";
 
 @Component({
     selector: 'auth-base',
+    encapsulation: ViewEncapsulation.Emulated,
     templateUrl: './auth.base.component.html',
     styleUrls: ['./login.css']
 })

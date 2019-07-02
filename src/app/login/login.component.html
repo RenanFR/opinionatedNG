@@ -1,10 +1,10 @@
 <form  [formGroup]="authForm" (submit)="login()">
     <div class="form-group">
       <input #nameInput formControlName="name" id="inputEmail" type="text" class="form-control" name="username" placeholder="Username" required="required">		
+      <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>    
       <vetweb-error *ngIf="(authForm.get('name').errors?.required  && authForm.get('name').touched)" errorMessage="User is required!"></vetweb-error>
       <vetweb-error *ngIf="authForm.get('name').errors?.unavailableUserName" errorMessage="User does not exist!"></vetweb-error>
     </div>
-    <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>    
     <div class="form-group">
       <input formControlName="password" id="inputPassword" type="password" class="form-control" name="password" placeholder="Password" required="required">	
       <vetweb-error *ngIf="(authForm.get('password').errors?.required && authForm.get('password').touched)" errorMessage="Password is required!"></vetweb-error>
@@ -13,9 +13,9 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" [disabled]="authForm.invalid || authForm.pending">Login</button>
     </div>
-    <button
-        (click)="doLoginWithGoogle()"
-        class="unstyled-button">
+    <div style="text-align:center;">
+      <button (click)="doLoginWithGoogle()" class="unstyled-button">
         <img src="../../assets/img/btn_google_signin_dark_focus_web.png" alt="Google Login">
-    </button>
+      </button>
+    </div>
 </form>

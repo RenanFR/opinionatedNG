@@ -13,8 +13,6 @@ import { userPasswordIsDifferent } from './user.password.is.different.validation
 })
 export class LoginComponent implements OnInit {
 
-    bodyClass: boolean = true;
-
     authForm: FormGroup;
     
     @ViewChild('nameInput') nameInput: ElementRef<HTMLInputElement>;
@@ -33,13 +31,13 @@ export class LoginComponent implements OnInit {
         .login(user.name, user.password)
         .subscribe(
           () => {
-              this.router.navigate(['categories']);
+            document.location.reload(true);
           },
           error => {
-              console.log(error.status);
-              if (this.platformDetector.checkIfItRunningOnBrowser()) {
-                  this.nameInput.nativeElement.focus();
-              }
+            console.log(error.status);
+            if (this.platformDetector.checkIfItRunningOnBrowser()) {
+                this.nameInput.nativeElement.focus();
+            }
           }
         );
     }

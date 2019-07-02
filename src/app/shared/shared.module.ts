@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { MessageCardsModule } from "./messages/message.cards.module";
 import { CommonModule } from "@angular/common";
 import { KeysPipe } from "./keys.pipe";
@@ -7,6 +7,7 @@ import { RequestInterceptor } from "./request.interceptor";
 import { TokenService } from './token.service';
 import { ProgressLoaderService } from './progress.loader.service';
 import { LoaderComponent } from './loader.component';
+import { GlobalErrorHandler } from './global.error.handler';
 
 @NgModule({
     imports: [
@@ -24,6 +25,10 @@ import { LoaderComponent } from './loader.component';
     ],
     providers: [
         ProgressLoaderService,
+        {
+            provide: ErrorHandler,
+            useClass: GlobalErrorHandler
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,
