@@ -15,13 +15,13 @@ import { LoginRoutingModule } from './login.routing.module';
 
 @NgModule({
     imports: [
-        LoginRoutingModule,
         CommonModule,
-        SharedModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule,
-        SocialLoginModule
+        SocialLoginModule,
+        LoginRoutingModule,
+        SharedModule
     ],
     declarations: [
         AuthenticationBaseComponent,

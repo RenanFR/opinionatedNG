@@ -14,12 +14,12 @@ import { LoginModule } from './login/login.module';
     AppComponent
   ],
   imports: [
-    BrowserModule,
     CommonModule,
-    SharedModule,
+    BrowserModule,
     CategoriesModule,
     PostsModule,
     LoginModule,
+    SharedModule,
     AppRoutingModule
   ],
   exports: [

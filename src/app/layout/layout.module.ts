@@ -9,8 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
     imports: [
         CommonModule,
-        SharedModule,
-        RouterModule
+        RouterModule,
+        SharedModule
     ],
     declarations: [
         LayoutComponent,

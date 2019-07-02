@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
         .login(user.name, user.password)
         .subscribe(
           () => {
-              this.router.navigate(['']);
+              this.router.navigate(['categories']);
           },
           error => {
-              console.log(error.status);console.log(error);
+              console.log(error.status);
               if (this.platformDetector.checkIfItRunningOnBrowser()) {
                   this.nameInput.nativeElement.focus();
               }

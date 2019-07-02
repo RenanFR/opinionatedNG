@@ -1,6 +1,6 @@
 <form  [formGroup]="authForm" (submit)="login()">
     <div class="form-group">
-      <input formControlName="name" id="inputEmail" type="text" class="form-control" name="username" placeholder="Username" required="required">		
+      <input #nameInput formControlName="name" id="inputEmail" type="text" class="form-control" name="username" placeholder="Username" required="required">		
       <vetweb-error *ngIf="(authForm.get('name').errors?.required  && authForm.get('name').touched)" errorMessage="User is required!"></vetweb-error>
       <vetweb-error *ngIf="authForm.get('name').errors?.unavailableUserName" errorMessage="User does not exist!"></vetweb-error>
     </div>
@@ -12,10 +12,10 @@
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" [disabled]="authForm.invalid || authForm.pending">Login</button>
-        <button
-            (click)="doLoginWithGoogle()"
-            class="unstyled-button">
-            <img src="../../assets/img/btn_google_signin_dark_focus_web.png" alt="Google Login">
-        </button>      
     </div>
+    <button
+        (click)="doLoginWithGoogle()"
+        class="unstyled-button">
+        <img src="../../assets/img/btn_google_signin_dark_focus_web.png" alt="Google Login">
+    </button>
 </form>

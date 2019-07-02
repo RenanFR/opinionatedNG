@@ -7,9 +7,9 @@ import { PostsRoutingModule } from './posts.routing.module';
 
 @NgModule({
     imports: [
+        CommonModule,
         LayoutModule,
         PostsRoutingModule,
-        CommonModule,
         SharedModule
     ],
     declarations: [

@@ -15,12 +15,12 @@ import { CategoriesRoutingModule } from './categories.routing.module';
         CategoriesComponent
     ],
     imports: [
-        LayoutModule,
-        CategoriesRoutingModule,
+        CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
-        SharedModule,
-        CommonModule
+        CategoriesRoutingModule,
+        LayoutModule,
+        SharedModule
     ],
     exports: [
         NewCategoryComponent,

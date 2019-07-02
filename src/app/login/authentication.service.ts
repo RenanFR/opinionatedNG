@@ -43,10 +43,9 @@ export class AuthenticationService {
             .then((user) => {
                 this.http.post<any>(`${base}/google`, user.idToken)
                     .subscribe((gmailUser) => {
-                        document.body.classList.remove('bg-dark');
                         let token = gmailUser.token;
                         this.tokenService.storeToken(token);
-                        this.router.navigate(['']);
+                        this.router.navigate(['categories']);
                     });
             });
     }
