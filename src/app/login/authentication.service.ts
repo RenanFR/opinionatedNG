@@ -45,7 +45,7 @@ export class AuthenticationService {
                     .subscribe((gmailUser) => {
                         let token = gmailUser.token;
                         this.tokenService.storeToken(token);
-                        this.router.navigate(['categories']);
+                        document.location.reload(true);
                     });
             });
     }

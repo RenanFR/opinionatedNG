@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 import { UserExistsValidator } from './user.exists.validator';
 import { PlatformRuntimeDetectorService } from '../shared/platform.runtime.detector.service';
-import { UserInfo } from './user.info';
 import { userPasswordIsDifferent } from './user.password.is.different.validation';
+import { UserInfo } from './user.info';
 
 @Component({
     templateUrl: './login.component.html',

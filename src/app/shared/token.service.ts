@@ -41,6 +41,7 @@ export class TokenService {
     decodeNotifyUser(): void {
         let token = this.getToken();
         let user = jtw_decode(token.replace(UsefulConstants.TOKEN_PREFIX, '')) as UserToken;
+        window.localStorage.setItem('currentUser', JSON.stringify(user));
         this.userSubject.next(user);
     }      
 
