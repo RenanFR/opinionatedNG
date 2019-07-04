@@ -3,7 +3,7 @@ import { BreadcrumbsService } from "./breadcrumbs.service";
 import { Breadcrumb } from "./breadcrumb";
 
 @Component({
-    selector: 'vetweb-breadcrumb',
+    selector: 'opinionated-breadcrumb',
     templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent implements OnInit{

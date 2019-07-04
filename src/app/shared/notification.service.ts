@@ -3,9 +3,7 @@ import { Subject, Observable } from "rxjs";
 import { Router, NavigationStart } from "@angular/router";
 import { Notification, AlertType } from "./notification";
 
-@Injectable({
-    providedIn: "root"
-})
+@Injectable()
 export class NotificationService {
 
     private notifyHub: Subject<Notification> = new Subject<Notification>();

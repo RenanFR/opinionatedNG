@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  WS_ADDRESS: '/opinionated/api',
+  WS_ADDRESS: 'http://opinions-ws:8090/opinionated/api',
 };

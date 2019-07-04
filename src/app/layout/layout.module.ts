@@ -5,6 +5,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { BreadcrumbComponent } from './breadcrumb.component';
+import { BreadcrumbsService } from './breadcrumbs.service';
 
 @NgModule({
     imports: [
@@ -15,14 +17,17 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [
         LayoutComponent,
         HeaderComponent,
+        BreadcrumbComponent,
         FooterComponent
     ],
     exports: [
         LayoutComponent,
         HeaderComponent,
+        BreadcrumbComponent,
         FooterComponent
     ],
     providers: [
+        BreadcrumbsService
     ]
 })
 export class LayoutModule {

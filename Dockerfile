@@ -16,9 +16,11 @@ ENV PATH /opinionatedWeb/node_modules/.bin:$PATH
 COPY package.json /opinionatedWeb/package.json
 RUN npm install
 RUN npm install -g @angular/cli@7.3.9
-
+# RUN npm install angular-http-server -g
 # add app
 COPY . /opinionatedWeb
 
 # start app
-CMD ng serve --host 0.0.0.0
+# CMD npm run prod
+CMD ng serve --prod --host 0.0.0.0
+# RUN angular-http-server --path /opinionatedWeb/dist/opinionatedWeb

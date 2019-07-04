@@ -1,0 +1,7 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs | keys" [ngClass]="{'breadcrumb-item': true, 'active': breadcrumb.value.isActive}">
+        <a *ngIf="!breadcrumb.value.isActive" [routerLink]="breadcrumb.key">{{breadcrumb.value.link}}</a>
+        <span *ngIf="breadcrumb.value.isActive">{{breadcrumb.value.link}}</span>
+    </li>
+</ol>

@@ -8,6 +8,8 @@ import { TokenService } from './token.service';
 import { ProgressLoaderService } from './progress.loader.service';
 import { LoaderComponent } from './loader.component';
 import { GlobalErrorHandler } from './global.error.handler';
+import { NotificationComponent } from './notification.component';
+import { NotificationService } from './notification.service';
 
 @NgModule({
     imports: [
@@ -16,15 +18,18 @@ import { GlobalErrorHandler } from './global.error.handler';
     ],
     declarations:[
         KeysPipe,
+        NotificationComponent,
         LoaderComponent
     ],
     exports:[
         MessageCardsModule,
+        NotificationComponent,
         LoaderComponent,
         KeysPipe
     ],
     providers: [
         ProgressLoaderService,
+        NotificationService,
         {
             provide: ErrorHandler,
             useClass: GlobalErrorHandler
