@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { CategoryService } from './category.service';
 import { Category } from './category';
 import { Router } from '@angular/router';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
     selector: 'opinionated-new-category',
@@ -15,9 +16,9 @@ export class NewCategoryComponent implements OnInit {
     constructor(
         public builder: FormBuilder,
         public service: CategoryService,
+        public notificationService: NotificationService,
         public router: Router
     ) {
-        
     }
 
     ngOnInit(): void {
@@ -30,7 +31,8 @@ export class NewCategoryComponent implements OnInit {
         let description: string = this.categoryForm.get('description').value;
         this.service.save(new Category(description)).subscribe((responseText) => {
             console.log(responseText);
-            this.router.navigate(['/categories']);
+            this.notificationService.success(`Alerting inclusion of category ${description}`, true);
+            this.router.navigateByUrl('/categories');
         });
     }
 

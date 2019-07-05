@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ChangeDetectorRef, NgZone, OnDestroy } from "@angular/core";
 import { Notification, AlertType } from "./notification";
 import { NotificationService } from "./notification.service";
 
@@ -11,19 +11,30 @@ export class NotificationComponent {
     @Input() timeToEase: number = 30000;
 
     public notifications: Notification[] = [];
+    public testMessage: string = 'Default text';
 
     constructor(
-        private notificationService: NotificationService
+        private notificationService: NotificationService,
+        private zone: NgZone,
+        private viewUpdate: ChangeDetectorRef
     ){
         this.notificationService
             .notifications()
             .subscribe((alert) => {
+                this.testMessage = 'Service updated the text';
+                this.viewUpdate.markForCheck();
+                // this.zone.run(() => {
+                //     this.testMessage = 'Text updated manually';
+                // });
+                console.log(alert);
                 if (!alert) {
+                    console.log('Null alert arrived to reset notifications');
                     this.notifications = [];
                     return;
                 }
                 console.log('Including new alert');
                 this.notifications.push(alert);
+                console.log(this.notifications);
                 console.log('Number of notifications ' + (this.notifications.length));
                 setTimeout(() => this.cancelAlert(alert), this.timeToEase);
             });
@@ -31,8 +42,10 @@ export class NotificationComponent {
 
     private cancelAlert(notification: Notification): void {
         console.log('Current number of notifications ' + (this.notifications.length));
+        console.log(notification);
         this.notifications.filter((not) => not != notification);
-        console.log('Removing alerts');
+        console.log(this.notifications);
+        console.log('Removing alerts, notification is now with length ' + this.notifications.length);
     }
 
     public getNotificationStyle(alert: Notification): string {
@@ -48,6 +61,10 @@ export class NotificationComponent {
                 return "alert alert-warning";
 
         }
+    }
+
+    public updateView(): void {
+        this.testMessage = 'Text updated by function';
     }
 
 }

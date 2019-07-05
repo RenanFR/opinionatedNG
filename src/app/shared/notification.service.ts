@@ -3,20 +3,23 @@ import { Subject, Observable } from "rxjs";
 import { Router, NavigationStart } from "@angular/router";
 import { Notification, AlertType } from "./notification";
 
-@Injectable()
+@Injectable({ providedIn: 'root'})
 export class NotificationService {
 
     private notifyHub: Subject<Notification> = new Subject<Notification>();
-    private persistent: boolean;
-
+    private persistent: boolean = false;
+    
     constructor(
         private router: Router
     ){
         router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
+                console.log('Route changed, is persistent alert: ' + this.persistent);
                 if (this.persistent) {
+                    console.log('Setting persist message to false');
                     this.persistent = false;
                 } else {
+                    console.log('Calling reset to notifications');
                     this.reset();
                 }
             }

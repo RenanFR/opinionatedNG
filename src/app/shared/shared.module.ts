@@ -4,7 +4,6 @@ import { CommonModule } from "@angular/common";
 import { KeysPipe } from "./keys.pipe";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RequestInterceptor } from "./request.interceptor";
-import { TokenService } from './token.service';
 import { ProgressLoaderService } from './progress.loader.service';
 import { LoaderComponent } from './loader.component';
 import { GlobalErrorHandler } from './global.error.handler';
@@ -29,7 +28,6 @@ import { NotificationService } from './notification.service';
     ],
     providers: [
         ProgressLoaderService,
-        NotificationService,
         {
             provide: ErrorHandler,
             useClass: GlobalErrorHandler
