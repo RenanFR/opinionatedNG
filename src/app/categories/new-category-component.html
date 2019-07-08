@@ -6,12 +6,14 @@
                     <h3>New category</h3>
                     <form [formGroup]="categoryForm" (submit)="saveCategory()">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <span>Description</span>
                                     <input formControlName="description" class="input" type="text" name="description">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-12">
                                 <button class="primary-button">Save</button>
                             </div>

@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Subject, Observable } from "rxjs";
+import { Subject, Observable, BehaviorSubject } from "rxjs";
 import { Router, NavigationStart } from "@angular/router";
 import { Notification, AlertType } from "./notification";
 
 @Injectable({ providedIn: 'root'})
 export class NotificationService {
 
-    private notifyHub: Subject<Notification> = new Subject<Notification>();
+    private notifyHub: BehaviorSubject<Notification> = new BehaviorSubject<Notification>(null);
     private persistent: boolean = false;
     
     constructor(
@@ -59,7 +59,7 @@ export class NotificationService {
         this.notifyHub.next(null);
     }
 
-    public notifications(): Observable<Notification> {
+    public notifications() {
         return this.notifyHub.asObservable();
     }
 

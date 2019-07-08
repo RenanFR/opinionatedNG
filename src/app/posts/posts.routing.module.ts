@@ -12,6 +12,14 @@ const routes: Routes = [
             title: 'Recent Threads'
         }
     },
+    {
+        path: 'new', 
+        component: RecentPostsComponent,
+        canActivate: [isLoggedGuard],
+        data: {
+            title: 'Recent Threads'
+        }
+    }    
 ];
 @NgModule({
     imports: [

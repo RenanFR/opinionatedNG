@@ -1,0 +1,50 @@
+<opinionated-layout>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <div class="section-row">
+                <h3>Create a new discussion</h3>
+                <form [formGroup]="categoryForm" (submit)="saveCategory()">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>Title</span>
+                                <input formControlName="title" class="input" type="text" name="title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>Description</span>
+                                <input formControlName="text" class="input" type="text" name="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>Attach a file</span>
+                                <input formControlName="media" class="input" type="file" name="media">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>Select the category</span>
+                                <input formControlName="media" class="input" type="file" name="media">
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="primary-button">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+</opinionated-layout>

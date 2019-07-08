@@ -36,12 +36,17 @@ export class NotificationComponent implements OnInit {
                 return;
             }
             console.log('Including new alert');
-            this.notifications.push(alert);
+            // this.notifications.push(alert);
+            // this.notifications = this.notifications.concat(alert);
+            // this.notifications = this.notifications.push(alert);
             console.log(this.notifications);
             console.log('Number of notifications ' + (this.notifications.length));
             //this.viewUpdate.detectChanges();
             //this.app.tick();
             setTimeout(() => this.cancelAlert(alert), this.timeToEase);
+        }, (e) => {
+            console.log(e);
+            this.testMessage = 'Error on subscribe';
         });
     }
 
