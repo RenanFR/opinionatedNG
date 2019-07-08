@@ -1,4 +1,4 @@
-import { AuthServiceConfig, GoogleLoginProvider } from "angular5-social-login";
+import { AuthServiceConfig, GoogleLoginProvider } from "angularx-social-login";
 
 export function getGoogleClientCredentials(): AuthServiceConfig {
     let config: AuthServiceConfig = new AuthServiceConfig([

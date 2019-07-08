@@ -9,7 +9,7 @@ import { isLoggedGuard } from './is.logged.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserExistsValidator } from './user.exists.validator';
 import { HttpClientModule } from '@angular/common/http';
-import { SocialLoginModule, AuthServiceConfig } from 'angular5-social-login';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getGoogleClientCredentials } from './google.configuration';
 import { LoginRoutingModule } from './login.routing.module';
 

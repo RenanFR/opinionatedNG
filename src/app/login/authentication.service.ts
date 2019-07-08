@@ -4,7 +4,7 @@ import { tap, map } from 'rxjs/operators';
 import { TokenService } from "src/app/shared/token.service";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { GoogleLoginProvider, AuthService } from 'angular5-social-login';
+import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
 
 const base:string = `${environment.WS_ADDRESS}/login`;
