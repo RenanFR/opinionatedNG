@@ -11,6 +11,7 @@ import { TokenService } from '../shared/token.service';
 export class CategoriesComponent implements OnInit {
 
     public categories: Category[];
+    public testMessage: string = 'Text default';
 
     constructor(
         private service:CategoryService,
@@ -23,6 +24,7 @@ export class CategoriesComponent implements OnInit {
         this.service.getAll().subscribe(
             (list) => {
                 console.log(`Retrieving ${list.length} categories`);
+                this.testMessage = 'Text changed by the subscribe';
                 this.categories = list;
             },
             (errorResponse) => {
