@@ -6,6 +6,7 @@ import { UserExistsValidator } from './user.exists.validator';
 import { PlatformRuntimeDetectorService } from '../shared/platform.runtime.detector.service';
 import { userPasswordIsDifferent } from './user.password.is.different.validation';
 import { UserInfo } from './user.info';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
     templateUrl: './login.component.html',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
       private authService: AuthenticationService,
       private platformDetector: PlatformRuntimeDetectorService,
       private userExistsValidator: UserExistsValidator,
+      private notifier: NotificationService,
       private router: Router
     ) { }
   
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
         .login(user.name, user.password)
         .subscribe(
           () => {
+            this.notifier.info('User authenticated successfully', true);
             document.location.reload(true);
           },
           error => {

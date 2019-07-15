@@ -5,44 +5,34 @@ import { NotificationService } from "./notification.service";
 @Component({
     selector: 'opinionated-notification',
     templateUrl: './notification.component.html',
-    changeDetection: ChangeDetectionStrategy.Default
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationComponent implements OnInit {
     
-    @Input() timeToEase: number = 30000;
+    @Input() timeToEase: number = 6000;
     
-    public notifications: Notification[] = [];
+    public notifications: Notification[ ] = [ ];
+
     public testMessage: string = 'Default text';
     
     constructor(
         private notificationService: NotificationService,
-        private zone: NgZone,
-        private app: ApplicationRef,
-        private viewUpdate: ChangeDetectorRef
+        private changeDetector: ChangeDetectorRef
     ){  }
         
     ngOnInit(): void {
         this.notificationService
         .notifications()
         .subscribe((alert) => {
-            //this.testMessage = 'Service updated the text';
-            //this.zone.run(() => {
-            //    this.testMessage = 'Service updated the text';
-            //});
-            console.log(alert);
+            this.testMessage = 'Service updated the text';
             if (!alert) {
                 console.log('Null alert arrived to reset notifications');
-                this.notifications = [];
+                this.notifications = [ ];
                 return;
             }
             console.log('Including new alert');
-            // this.notifications.push(alert);
-            // this.notifications = this.notifications.concat(alert);
-            // this.notifications = this.notifications.push(alert);
-            console.log(this.notifications);
+            this.notifications = this.notifications.concat(alert);
             console.log('Number of notifications ' + (this.notifications.length));
-            //this.viewUpdate.detectChanges();
-            //this.app.tick();
             setTimeout(() => this.cancelAlert(alert), this.timeToEase);
         }, (e) => {
             console.log(e);
@@ -52,9 +42,7 @@ export class NotificationComponent implements OnInit {
 
     private cancelAlert(notification: Notification): void {
         console.log('Current number of notifications ' + (this.notifications.length));
-        console.log(notification);
-        this.notifications = this.notifications.filter((not) => not != notification);
-        console.log(this.notifications);
+        this.updateNotifications(notification);
         console.log('Removing alerts, notification is now with length ' + this.notifications.length);
     }
 
@@ -73,8 +61,19 @@ export class NotificationComponent implements OnInit {
         }
     }
 
+    public updateNotifications(notif: Notification): void {
+        this.notifications = this.notifications.filter((not) => not != notif);
+        console.log(`Forcing update of the notifications list, is empty? ${this.isEmptyAlerts()}`);
+        this.changeDetector.markForCheck();
+    }
+
     public updateView(): void {
         this.testMessage = 'Text updated by function';
+    }
+
+    public isEmptyAlerts(): boolean {
+        console.log('Checking number of notifications');
+        return this.notifications.length === 0;
     }
 
 }

@@ -1,4 +1,4 @@
-<div *ngIf="!(notifications.length === 0); else emptyNotifications">
+<div *ngIf="!isEmptyAlerts(); else emptyNotifications">
 
     <div *ngFor="let notif of notifications" class="{{ getNotificationStyle(notif) }}" role="alert">
         {{ notif.message }}
