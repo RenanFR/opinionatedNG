@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           () => {
             this.notifier.info('User authenticated successfully', true);
-            document.location.reload(true);
+            window.location.href = '/categories?redirectAfterAuth=true';
           },
           error => {
             console.log(error.status);

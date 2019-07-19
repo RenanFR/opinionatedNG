@@ -43,7 +43,7 @@ export class AuthenticationService {
                     .subscribe((gmailUser) => {
                         let token = gmailUser.token;
                         this.tokenService.storeToken(token);
-                        document.location.reload(true);
+                        window.location.href = '/categories?redirectAfterAuth=true';
                     });
             });
     }
