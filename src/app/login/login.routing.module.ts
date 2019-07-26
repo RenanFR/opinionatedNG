@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { AuthenticationBaseComponent } from './auth.base.component';
 import { EnableToLogin } from './enable.to.login';
+import { UserRegistrationComponent } from './user.registration.component';
 
 const routes: Routes = [
     {
-        path: 'login',
+        path: 'auth',
         component: AuthenticationBaseComponent,
         canActivate: [EnableToLogin],
         data: {
@@ -14,9 +15,13 @@ const routes: Routes = [
         },
         children: [
           {
-            path: '', 
+            path: 'login', 
             component: LoginComponent
-          }
+          },
+          {
+            path: 'register-user', 
+            component: UserRegistrationComponent
+          }          
         ]
       }
 ];

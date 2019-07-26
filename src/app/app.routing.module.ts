@@ -5,10 +5,10 @@ const routes: Routes = [
   {
       path: '',
       pathMatch: 'full',
-      redirectTo: 'login',
+      redirectTo: 'auth/login',
   },
   {
-    path: 'login',
+    path: 'auth/login',
     loadChildren: './login/login.module#LoginModule'
   },
   { 

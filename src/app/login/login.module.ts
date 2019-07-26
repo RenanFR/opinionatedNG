@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getGoogleClientCredentials } from './google.configuration';
 import { LoginRoutingModule } from './login.routing.module';
+import { UserRegistrationComponent } from './user.registration.component';
 
 @NgModule({
     imports: [
@@ -25,11 +26,13 @@ import { LoginRoutingModule } from './login.routing.module';
     ],
     declarations: [
         AuthenticationBaseComponent,
-        LoginComponent
+        LoginComponent,
+        UserRegistrationComponent
     ],
     exports: [
         AuthenticationBaseComponent,
-        LoginComponent
+        LoginComponent,
+        UserRegistrationComponent
     ],
     providers: [
         UserExistsValidator,

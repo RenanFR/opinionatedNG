@@ -10,6 +10,10 @@ export class AuthenticationBaseComponent implements OnInit {
 
     @ViewChild('openForm') openFormModal: ElementRef<HTMLInputElement>;
 
+    public existentUserDetected: boolean = false;
+
+    public isRegistration: boolean = true;
+
     ngOnInit(): void {
         this.openFormModal.nativeElement.click();
     }
