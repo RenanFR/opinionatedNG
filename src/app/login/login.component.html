@@ -6,7 +6,7 @@
       <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>    
 
       <vetweb-error *ngIf="(authForm.get('name').errors?.required  && authForm.get('name').touched)" errorMessage="User is required!"></vetweb-error>
-      <vetweb-error *ngIf="authForm.get('name').errors?.unavailableUserName" errorMessage="User does not exist!"></vetweb-error>
+      <vetweb-error *ngIf="authForm.get('name').errors?.nonExistentUser" errorMessage="User does not exist!"></vetweb-error>
 
     </div>
 

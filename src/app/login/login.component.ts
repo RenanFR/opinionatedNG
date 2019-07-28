@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
       this.authForm = this.authFormBuilder.group({
-          name: [ '', [ Validators.required ], [ this.userExistsValidator.checkNameIsTaken() ] ],
+          name: [ '', [ Validators.required ], [ this.userExistsValidator.checkEmailIsTaken() ] ],
           password: [ '', Validators.required ]
       }, {
         validator: userPasswordIsDifferent

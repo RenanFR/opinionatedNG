@@ -24,7 +24,7 @@ export class UserRegistrationComponent implements OnInit {
 
     ngOnInit(): void {
         this.newUserForm = this.newUserFormBuilder.group({
-            userMail: [ '', [ Validators.email ], [ this.userExistsValidator.checkNameIsTaken() ] ],
+            userMail: [ '', [ Validators.required ], [ this.userExistsValidator.checkEmailAvailability() ] ],
             userName: [ '', [] ],
             password: [ '', [] ],
             passwordConfirmation: [ '', [] ],

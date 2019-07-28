@@ -7,7 +7,7 @@
   
         <vetweb-error *ngIf="(newUserForm.get('userMail').errors?.required  && newUserForm.get('userMail').touched)" errorMessage="Email to authenticate is required!"></vetweb-error>
         <vetweb-error *ngIf="(newUserForm.get('userMail').errors?.email  && newUserForm.get('userMail').touched)" errorMessage="Must be a valid email!"></vetweb-error>
-        <vetweb-error *ngIf="newUserForm.get('userMail').errors?.unavailableUserName" errorMessage="User with provided email already exists!"></vetweb-error>
+        <vetweb-error *ngIf="newUserForm.get('userMail').errors?.emailAlreadyInUse" errorMessage="User with provided email already exists!"></vetweb-error>
   
     </div>
 
