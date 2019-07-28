@@ -13,6 +13,7 @@ import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { getGoogleClientCredentials } from './google.configuration';
 import { LoginRoutingModule } from './login.routing.module';
 import { UserRegistrationComponent } from './user.registration.component';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { UserRegistrationComponent } from './user.registration.component';
         UserRegistrationComponent
     ],
     providers: [
+        AuthenticationService,
         UserExistsValidator,
         EnableToLogin,
         isLoggedGuard,

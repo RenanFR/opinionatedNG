@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { AuthenticationService } from "./authentication.service";
-import { Observable } from "rxjs";
 import { AbstractControl } from "@angular/forms";
 import { debounceTime, switchMap, map, first } from "rxjs/operators";
 
@@ -8,7 +7,7 @@ import { debounceTime, switchMap, map, first } from "rxjs/operators";
 export class UserExistsValidator {
 
     constructor(
-        private authService:AuthenticationService 
+        private authService: AuthenticationService 
     ) {}
 
     public checkNameIsTaken(): Function {

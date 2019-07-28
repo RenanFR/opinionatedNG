@@ -1,6 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 import { UserExistsValidator } from './user.exists.validator';
 import { PlatformRuntimeDetectorService } from '../shared/platform.runtime.detector.service';
@@ -23,8 +22,7 @@ export class LoginComponent implements OnInit {
       private authService: AuthenticationService,
       private platformDetector: PlatformRuntimeDetectorService,
       private userExistsValidator: UserExistsValidator,
-      private notifier: NotificationService,
-      private router: Router
+      private notifier: NotificationService
     ) { }
   
     public login(): void {
@@ -49,10 +47,10 @@ export class LoginComponent implements OnInit {
       this.authService.doLoginWithGoogle();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
       this.authForm = this.authFormBuilder.group({
-          name:['', [Validators.required], [this.userExistsValidator.checkNameIsTaken()]],
-          password:['', Validators.required]
+          name: [ '', [ Validators.required ], [ this.userExistsValidator.checkNameIsTaken() ] ],
+          password: [ '', Validators.required ]
       }, {
         validator: userPasswordIsDifferent
       });

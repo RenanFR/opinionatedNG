@@ -1,11 +1,7 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
 import { UserExistsValidator } from './user.exists.validator';
-import { PlatformRuntimeDetectorService } from '../shared/platform.runtime.detector.service';
-import { userPasswordIsDifferent } from './user.password.is.different.validation';
-import { UserInfo } from './user.info';
 import { NotificationService } from '../shared/notification.service';
 import { NewUserModel } from './new.user.model';
 
@@ -15,7 +11,7 @@ import { NewUserModel } from './new.user.model';
 })
 export class UserRegistrationComponent implements OnInit {
     
-    private newUserForm: FormGroup;
+    newUserForm: FormGroup;
 
     private userToRegister: NewUserModel = new NewUserModel();
     
@@ -28,17 +24,18 @@ export class UserRegistrationComponent implements OnInit {
 
     ngOnInit(): void {
         this.newUserForm = this.newUserFormBuilder.group({
-            userMail: ['', []],
-            userName: ['', []],
-            password: ['', []],
-            passwordConfirmation: ['', []],
-            useTwoFactorAuth: [false, []],
-            isSocialLogin: [false, []],
+            userMail: [ '', [ Validators.email ], [ this.userExistsValidator.checkNameIsTaken() ] ],
+            userName: [ '', [] ],
+            password: [ '', [] ],
+            passwordConfirmation: [ '', [] ],
+            useTwoFactorAuth: [ false, [] ],
+            isSocialLogin: [ false, [] ],
         });
     }
 
     private onSave(): void {
-        
+        this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
+        console.log(this.userToRegister);
     }
     
 }

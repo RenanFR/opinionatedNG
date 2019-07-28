@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 const base:string = `${environment.WS_ADDRESS}/login`;
 
-@Injectable({ providedIn: 'root'})
+@Injectable()
 export class AuthenticationService {
     
     constructor(
