@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { CategoryService } from './category.service';
-import { Category } from './category';
+import { CategoryService } from '../services/category.service';
+import { Category } from '../models/category';
 import { Router } from '@angular/router';
-import { NotificationService } from '../shared/notification.service';
+import { NotificationService } from '../../shared/services/notification.service';
 
 @Component({
     selector: 'opinionated-new-category',
-    templateUrl: './new-category-component.html'
+    templateUrl: '../templates/new-category-component.html'
   })
 export class NewCategoryComponent implements OnInit {
     

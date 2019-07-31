@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { AuthenticationService } from "./authentication.service";
 import { AbstractControl } from "@angular/forms";
 import { debounceTime, switchMap, map, first } from "rxjs/operators";
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable()
 export class UserExistsValidator {

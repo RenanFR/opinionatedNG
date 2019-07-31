@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from './category';
-import { CategoryService } from './category.service';
+import { Category } from '../models/category';
+import { CategoryService } from '../services/category.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TokenService } from '../shared/token.service';
-import { NotificationService } from '../shared/notification.service';
+import { TokenService } from '../../shared/services/token.service';
+import { NotificationService } from '../../shared/services/notification.service';
 
 @Component({
     selector: 'opinionated-categories',
-    templateUrl: './categories-component.html'
+    templateUrl: '../templates/categories-component.html'
   })
 export class CategoriesComponent implements OnInit {
 
@@ -19,8 +19,7 @@ export class CategoriesComponent implements OnInit {
         private currentRoute: ActivatedRoute,
         private notifier: NotificationService,
         private router: Router
-    ){
-    }
+    ){}
 
     ngOnInit(): void {
         let isRedirect: boolean = this.currentRoute.snapshot.queryParams['redirectAfterAuth'];

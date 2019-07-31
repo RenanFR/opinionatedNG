@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RecentPostsComponent } from './recent.posts.component';
-import { isLoggedGuard } from '../login/is.logged.guard';
+import { RecentPostsComponent } from './components/recent.posts.component';
+import { isLoggedGuard } from '../login/utilities/is.logged.guard';
+
 
 const routes: Routes = [
     {
         path: 'posts', 
         component: RecentPostsComponent,
-        canActivate: [isLoggedGuard],
+        canActivate: [ isLoggedGuard ],
         data: {
             title: 'Recent Threads'
         }
@@ -15,7 +16,7 @@ const routes: Routes = [
     {
         path: 'new', 
         component: RecentPostsComponent,
-        canActivate: [isLoggedGuard],
+        canActivate: [ isLoggedGuard ],
         data: {
             title: 'Recent Threads'
         }

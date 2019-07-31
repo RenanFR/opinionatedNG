@@ -2,8 +2,8 @@ import { Component, ViewChild, ElementRef, OnInit, ViewEncapsulation } from "@an
 
 @Component({
     selector: 'auth-base',
-    templateUrl: './auth.base.component.html',
-    styleUrls: ['./login.css']
+    templateUrl: '../templates/auth.base.component.html',
+    styleUrls: ['../styles/login.css']
 })
 export class AuthenticationBaseComponent implements OnInit {
 

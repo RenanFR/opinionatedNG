@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserExistsValidator } from './user.exists.validator';
-import { NotificationService } from '../shared/notification.service';
-import { NewUserModel } from './new.user.model';
+import { NewUserModel } from '../models/new.user.model';
+import { UserExistsValidator } from '../validation/user.exists.validator';
+import { UserService } from '../services/user.service';
+import { verifyPasswordConfirmationMatching } from '../validation/password.and.confirmation.dont.match';
 
 @Component({
-    templateUrl: './user.registration.component.html',
-    styleUrls: ['./login.component.css']
+    templateUrl: '../templates/user.registration.component.html',
+    styleUrls: ['../styles/login.component.css']
 })
 export class UserRegistrationComponent implements OnInit {
     
@@ -18,8 +18,7 @@ export class UserRegistrationComponent implements OnInit {
     constructor(
         private newUserFormBuilder: FormBuilder,
         private userExistsValidator: UserExistsValidator,
-        private notifier: NotificationService,
-        private router: Router
+        private service: UserService
     ) { }
 
     ngOnInit(): void {
@@ -30,12 +29,19 @@ export class UserRegistrationComponent implements OnInit {
             passwordConfirmation: [ '', [] ],
             useTwoFactorAuth: [ false, [] ],
             isSocialLogin: [ false, [] ],
+        }, {
+            validator: verifyPasswordConfirmationMatching
         });
     }
 
     private onSave(): void {
         this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
-        console.log(this.userToRegister);
+        this.service.signUpUser(this.userToRegister).subscribe((responseText) => {
+            
+        },
+        (shitHappened) => {
+            
+        });
     }
     
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap, map, filter } from 'rxjs/operators';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { TokenService } from './shared/token.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +13,6 @@ export class AppComponent implements OnInit {
   constructor(
     private titleHandler: Title,
     private router: Router,
-    private tokenService: TokenService,
     private activatedRoute: ActivatedRoute
   ){ }
   

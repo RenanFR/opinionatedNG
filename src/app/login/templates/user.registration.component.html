@@ -30,9 +30,10 @@
     <div class="form-group">
 
         <input formControlName="passwordConfirmation" id="inputPasswordConfirm" type="password" class="form-control" name="inputPasswordConfirm" placeholder="Password confirmation" required="required">
+        <small *ngIf="(newUserForm.get('password').valid && newUserForm.get('passwordConfirmation').valid && !newUserForm.errors?.passConfDontMatch)" class="text-success">Password and confirmation matching</small>
 
         <vetweb-error *ngIf="(newUserForm.get('passwordConfirmation').errors?.required && newUserForm.get('passwordConfirmation').touched)" errorMessage="Confirm your password!"></vetweb-error>
-        <vetweb-error *ngIf="newUserForm.errors?.wrongCredentials" errorMessage="Password and confirmation must be equals!"></vetweb-error>
+        <vetweb-error *ngIf="(newUserForm.errors?.passConfDontMatch && newUserForm.get('passwordConfirmation').touched)" errorMessage="Password and confirmation must be equals!"></vetweb-error>
     
     </div>
 

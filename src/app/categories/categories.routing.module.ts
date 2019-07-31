@@ -1,14 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { NewCategoryComponent } from './new.category.component';
-import { isLoggedGuard } from '../login/is.logged.guard';
-import { CategoriesComponent } from './categories.component';
+import { CategoriesComponent } from './components/categories.component';
+import { isLoggedGuard } from '../login/utilities/is.logged.guard';
+import { NewCategoryComponent } from './components/new.category.component';
 
 const routes: Routes = [
     {
         path: 'categories',
         component: CategoriesComponent,
-        canActivate: [isLoggedGuard],
+        canActivate: [ isLoggedGuard ],
         data: {
             title: 'Categories'
         }
@@ -16,7 +16,7 @@ const routes: Routes = [
     {
         path: 'categories/new',
         component: NewCategoryComponent,
-        canActivate: [isLoggedGuard],
+        canActivate: [ isLoggedGuard ],
         data: {
             title: 'New category'
         }

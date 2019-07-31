@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
-import { LoadingType } from "./loading.type";
 import { startWith } from "rxjs/operators";
+import { LoadingType } from '../models/loading.type';
 
 @Injectable()
 export class ProgressLoaderService {

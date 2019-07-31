@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Subject, Observable, BehaviorSubject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { Router, NavigationStart } from "@angular/router";
-import { Notification, AlertType } from "./notification";
+import { AlertType, Notification } from '../models/notification';
 
 @Injectable({ providedIn: 'root'})
 export class NotificationService {

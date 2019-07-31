@@ -1,15 +1,15 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthenticationService } from './authentication.service';
-import { UserExistsValidator } from './user.exists.validator';
-import { PlatformRuntimeDetectorService } from '../shared/platform.runtime.detector.service';
-import { userPasswordIsDifferent } from './user.password.is.different.validation';
-import { UserInfo } from './user.info';
-import { NotificationService } from '../shared/notification.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { UserExistsValidator } from '../validation/user.exists.validator';
+import { UserInfo } from '../models/user.info';
+import { userPasswordIsDifferent } from '../validation/user.password.is.different.validation';
+import { PlatformRuntimeDetectorService } from 'src/app/shared/services/platform.runtime.detector.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    templateUrl: '../templates/login.component.html',
+    styleUrls: ['../styles/login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       private notifier: NotificationService
     ) { }
   
-    public login(): void {
+    private login(): void {
       let user: UserInfo = this.authForm.getRawValue() as UserInfo;
       this.authService
         .login(user.name, user.password)
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         );
     }
 
-    public doLoginWithGoogle(): void {
+    private doLoginWithGoogle(): void {
       this.authService.doLoginWithGoogle();
     }
 

@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { ProgressLoaderService } from "./progress.loader.service";
+import { ProgressLoaderService } from "../services/progress.loader.service";
 import { map } from "rxjs/operators";
 
 @Component({
     selector: 'opinionated-loader',
-    templateUrl: './loader.component.html',
-    styleUrls: ['./loader.component.css']
+    templateUrl: '../templates/loader.component.html',
+    styleUrls: ['../styles/loader.component.css']
 })
 export class LoaderComponent implements OnInit {
     

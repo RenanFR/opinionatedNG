@@ -1,12 +1,10 @@
 import { Inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import * as jtw_decode from 'jwt-decode';
-import { UserToken } from '../login/user.token';
-import { UsefulConstants } from './useful.constants';
+import { UserToken } from '../../login/models/user.token';
+import { UsefulConstants } from '../utilities/useful.constants';
 
-@Injectable({
-    providedIn: "root"
-})
+@Injectable()
 export class TokenService {
 
     constructor(){

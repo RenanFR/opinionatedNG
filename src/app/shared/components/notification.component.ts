@@ -1,10 +1,10 @@
 import { Component, Input, ChangeDetectorRef, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, ApplicationRef } from "@angular/core";
-import { Notification, AlertType } from "./notification";
-import { NotificationService } from "./notification.service";
+import { Notification, AlertType } from "../models/notification";
+import { NotificationService } from "../services/notification.service";
 
 @Component({
     selector: 'opinionated-notification',
-    templateUrl: './notification.component.html',
+    templateUrl: '../templates/notification.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationComponent implements OnInit {

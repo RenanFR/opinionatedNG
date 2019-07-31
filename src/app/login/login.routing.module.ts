@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login.component';
-import { AuthenticationBaseComponent } from './auth.base.component';
-import { EnableToLogin } from './enable.to.login';
-import { UserRegistrationComponent } from './user.registration.component';
+import { EnableToLogin } from './utilities/enable.to.login';
+import { AuthenticationBaseComponent } from './components/auth.base.component';
+import { LoginComponent } from './components/login.component';
+import { UserRegistrationComponent } from './components/user.registration.component';
 
 const routes: Routes = [
     {
         path: 'auth',
         component: AuthenticationBaseComponent,
-        canActivate: [EnableToLogin],
+        canActivate: [ EnableToLogin ],
         data: {
           title: 'Authentication'
         },

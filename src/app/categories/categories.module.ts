@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { NewCategoryComponent } from './new.category.component';
+import { NewCategoryComponent } from './components/new.category.component';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from '../layout/layout.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CategoryService } from './category.service';
+import { CategoryService } from './services/category.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriesComponent } from './categories.component';
+import { CategoriesComponent } from './components/categories.component';
 import { SharedModule } from '../shared/shared.module';
 import { CategoriesRoutingModule } from './categories.routing.module';
 
