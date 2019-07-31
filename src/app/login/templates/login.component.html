@@ -2,11 +2,11 @@
 
     <div class="form-group">
 
-      <input #nameInput formControlName="name" id="inputEmail" type="text" class="form-control" name="username" placeholder="Username" required="required">		
-      <small *ngIf="authForm.get('name').valid" class="text-success">User exists</small>    
+      <input #nameInput formControlName="email" id="inputEmail" type="text" class="form-control" name="email" placeholder="Email" required="required">		
+      <small *ngIf="authForm.get('email').valid" class="text-success">User exists</small>    
 
-      <vetweb-error *ngIf="(authForm.get('name').errors?.required  && authForm.get('name').touched)" errorMessage="User is required!"></vetweb-error>
-      <vetweb-error *ngIf="authForm.get('name').errors?.nonExistentUser" errorMessage="User does not exist!"></vetweb-error>
+      <vetweb-error *ngIf="(authForm.get('email').errors?.required  && authForm.get('email').touched)" errorMessage="User is required!"></vetweb-error>
+      <vetweb-error *ngIf="authForm.get('email').errors?.nonExistentUser" errorMessage="User does not exist!"></vetweb-error>
 
     </div>
 

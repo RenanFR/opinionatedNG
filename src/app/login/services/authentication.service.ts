@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { GoogleLoginProvider, AuthService } from 'angularx-social-login';
 import { TokenService } from '../../shared/services/token.service';
+import { UserInfo } from '../models/user.info';
 
 const base:string = `${environment.WS_ADDRESS}/login`;
 
@@ -17,10 +18,10 @@ export class AuthenticationService {
         private socialAuth: AuthService
     ) {}
 
-    public login(name: string, password: string): Observable<any> {
+    public login(email: string, password: string): Observable<any> {
         return this
             .http
-            .post(base, { name, password }, { observe: 'response' })
+            .post(base, { email, password }, { observe: 'response' })
             .pipe(tap(response => {
                 let token: string = response.headers.get('Authorization');
                 this.tokenService.storeToken(token);
