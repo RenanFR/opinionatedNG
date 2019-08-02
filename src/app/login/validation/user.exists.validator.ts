@@ -32,4 +32,15 @@ export class UserExistsValidator {
         };
     }
 
+    public checkTFAIsEnabledForUser(): Function {
+        return (control: AbstractControl) => {
+            return control
+                .valueChanges
+                .pipe(debounceTime(300))
+                .pipe(switchMap(emailToCheck => this.authService.checkTFAIsEnabledForUser(emailToCheck)))
+                .pipe(map(response => response? {usingTFA: true} : null))
+                .pipe(first());
+        };
+    }    
+
 }

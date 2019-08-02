@@ -14,5 +14,5 @@ export class UserService {
     public signUpUser(account: NewUserModel): Observable<string> {
         return this.http.post(`${base}/signup`, account, { responseType: 'text' });
     }
-
+    
 }

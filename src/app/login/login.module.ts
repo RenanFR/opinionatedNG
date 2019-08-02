@@ -15,10 +15,12 @@ import { UserRegistrationComponent } from './components/user.registration.compon
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { BarCodeScanningComponent } from './components/barcode.scanning.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     imports: [
         CommonModule,
+        BrowserModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,

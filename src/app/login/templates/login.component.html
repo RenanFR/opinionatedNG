@@ -3,9 +3,9 @@
     <div class="form-group">
 
       <input #nameInput formControlName="email" id="inputEmail" type="text" class="form-control" name="email" placeholder="Email" required="required">		
-      <small *ngIf="authForm.get('email').valid" class="text-success">User exists</small>    
+      <small *ngIf="(!authForm.get('email').errors?.required && !authForm.get('email').errors?.nonExistentUser && authForm.get('email').touched)" class="text-success">User exists</small>    
 
-      <vetweb-error *ngIf="(authForm.get('email').errors?.required  && authForm.get('email').touched)" errorMessage="User is required!"></vetweb-error>
+      <vetweb-error *ngIf="(authForm.get('email').errors?.required && authForm.get('email').touched)" errorMessage="User is required!"></vetweb-error>
       <vetweb-error *ngIf="authForm.get('email').errors?.nonExistentUser" errorMessage="User does not exist!"></vetweb-error>
 
     </div>
@@ -19,9 +19,22 @@
 
     </div>
 
+    <ng-template [ngIf]="authForm.get('email').errors?.usingTFA && authForm.get('email').touched">
+      <div class="form-group">
+
+        <input formControlName="authCode" id="inputAuthenticatorToken" type="text" class="form-control" name="authCode" placeholder="Authenticator Generated Token" [required]="authForm.get('email').errors?.usingTFA">	
+
+        <vetweb-error *ngIf="(authForm.get('authCode').errors?.required && authForm.get('authCode').touched)" errorMessage="You choose to use two factor authentication, please provide generated token!"></vetweb-error>
+
+      </div>
+    </ng-template>
+
     <div class="form-group">
 
-        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" [disabled]="authForm.invalid || authForm.pending">Login</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" [disabled]="(authForm.pending || 
+                                                                                  authForm.get('email').errors?.required || 
+                                                                                  authForm.get('password').errors?.required || 
+                                                                                  (authForm.get('email').errors?.usingTFA && authForm.get('authCode').errors?.required))">Login</button>
 
     </div>
 

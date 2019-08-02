@@ -18,10 +18,13 @@ export class AuthenticationService {
         private socialAuth: AuthService
     ) {}
 
-    public login(email: string, password: string): Observable<any> {
+    public login(user: UserInfo): Observable<any> {
+        let email: string = user.email;
+        let password: string = user.password;
+        let authCode: string = user.authCode;
         return this
             .http
-            .post(base, { email, password }, { observe: 'response' })
+            .post(base, { email, password, authCode }, { observe: 'response' })
             .pipe(tap(response => {
                 let token: string = response.headers.get('Authorization');
                 this.tokenService.storeToken(token);
@@ -46,5 +49,12 @@ export class AuthenticationService {
                     });
             });
     }
+
+    public checkTFAIsEnabledForUser(user: string): Observable<boolean> {
+        console.log(`Checking if user ${user} uses two factor authentication`)
+        return this
+            .http
+            .get<boolean>(`${base}/uses-tfa/${user}`);        
+    }    
 
 }

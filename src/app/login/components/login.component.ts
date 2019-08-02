@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private login(): void {
       let user: UserInfo = this.authForm.getRawValue() as UserInfo;
       this.authService
-        .login(user.email, user.password)
+        .login(user)
         .subscribe(
           () => {
             this.notifier.info('User authenticated successfully', true);
@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
       this.authForm = this.authFormBuilder.group({
-          email: [ '', [ Validators.required ], [ this.userExistsValidator.checkEmailIsTaken() ] ],
-          password: [ '', Validators.required ]
+          email: [ '', [ Validators.required ], [ this.userExistsValidator.checkEmailIsTaken(), this.userExistsValidator.checkTFAIsEnabledForUser() ] ],
+          password: [ '', Validators.required ],
+          authCode: [ '', [ ], [ ] ]
       }, {
         validator: userPasswordIsDifferent
       });

@@ -4,6 +4,7 @@ import { EnableToLogin } from './utilities/enable.to.login';
 import { AuthenticationBaseComponent } from './components/auth.base.component';
 import { LoginComponent } from './components/login.component';
 import { UserRegistrationComponent } from './components/user.registration.component';
+import { BarCodeScanningComponent } from './components/barcode.scanning.component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,13 @@ const routes: Routes = [
             component: UserRegistrationComponent
           }          
         ]
+      },
+      {
+          path: 'barcode/:qrCode', 
+          component: BarCodeScanningComponent,
+          data: {
+              title: 'Bar code for authentication'
+          }
       }
 ];
 @NgModule({

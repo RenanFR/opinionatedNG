@@ -4,6 +4,7 @@ import { NewUserModel } from '../models/new.user.model';
 import { UserExistsValidator } from '../validation/user.exists.validator';
 import { UserService } from '../services/user.service';
 import { verifyPasswordConfirmationMatching } from '../validation/password.and.confirmation.dont.match';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: '../templates/user.registration.component.html',
@@ -16,6 +17,7 @@ export class UserRegistrationComponent implements OnInit {
     private userToRegister: NewUserModel = new NewUserModel();
     
     constructor(
+        private router: Router,
         private newUserFormBuilder: FormBuilder,
         private userExistsValidator: UserExistsValidator,
         private service: UserService
@@ -37,10 +39,10 @@ export class UserRegistrationComponent implements OnInit {
     private onSave(): void {
         this.userToRegister = this.newUserForm.getRawValue() as NewUserModel;
         this.service.signUpUser(this.userToRegister).subscribe((responseText) => {
-            
+            this.router.navigate(['/barcode', responseText]);
         },
         (shitHappened) => {
-            
+            console.log(shitHappened);
         });
     }
     
