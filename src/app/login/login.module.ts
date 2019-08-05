@@ -16,6 +16,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { BarCodeScanningComponent } from './components/barcode.scanning.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { BrowserModule } from '@angular/platform-browser';
         BrowserModule,
         HttpClientModule,
         FormsModule,
+        TranslateModule,
         ReactiveFormsModule,
         SocialLoginModule,
         LoginRoutingModule,

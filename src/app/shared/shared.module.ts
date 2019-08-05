@@ -7,9 +7,9 @@ import { ProgressLoaderService } from './services/progress.loader.service';
 import { LoaderComponent } from './components/loader.component';
 import { GlobalErrorHandler } from './global/global.error.handler';
 import { NotificationComponent } from './components/notification.component';
-import { NotificationService } from './services/notification.service';
 import { TokenService } from './services/token.service';
 import { RequestInterceptor } from './global/request.interceptor';
+import { SettingsService } from './services/settings.service';
 
 @NgModule({
     imports: [
@@ -30,6 +30,7 @@ import { RequestInterceptor } from './global/request.interceptor';
     providers: [
         ProgressLoaderService,
         TokenService,
+        SettingsService,
         {
             provide: ErrorHandler,
             useClass: GlobalErrorHandler

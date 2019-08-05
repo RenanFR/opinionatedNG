@@ -8,6 +8,15 @@ import { AppRoutingModule } from './app.routing.module';
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
 import { LoginModule } from './login/login.module';
+import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+
+}
 
 @NgModule({
   declarations: [
@@ -20,11 +29,18 @@ import { LoginModule } from './login/login.module';
     PostsModule,
     LoginModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [ HttpClient ]
+        }
+    }),
   ],
   exports: [
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
